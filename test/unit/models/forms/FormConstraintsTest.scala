@@ -23,10 +23,6 @@ import play.api.data.validation.{Invalid, Valid}
 
 class FormConstraintsTest extends ModelsBaseSpec {
 
-  private val currentYear: Int = Calendar.getInstance().get(Calendar.YEAR)
-  //TODO read from appconfig
-  private val yearLowBound: Int = 2010
-
   "FormConstraintsTest" when {
 
     "dateMustBeInThePast" should {
@@ -71,36 +67,36 @@ class FormConstraintsTest extends ModelsBaseSpec {
 
       "return valid when year entered is earliest valid" in {
         val date      = Calendar.getInstance()
-        val yearsDiff = yearLowBound - currentYear
+        val yearsDiff = realAppConfig.yearLowBound - realAppConfig.currentYear
         date.add(Calendar.YEAR, yearsDiff)
 
         val yearInstant = date.toInstant
-        val result      = FormConstraints.dateLowerBound("Test error", yearLowBound).apply(yearInstant)
+        val result      = FormConstraints.dateLowerBound("Test error", realAppConfig.yearLowBound).apply(yearInstant)
 
         result shouldBe Valid
       }
 
       "return valid when year entered is in future" in {
         val date      = Calendar.getInstance()
-        val yearsDiff = currentYear + 1
+        val yearsDiff = realAppConfig.currentYear + 1
         date.add(Calendar.YEAR, yearsDiff)
 
         val yearInstant = date.toInstant
-        val result      = FormConstraints.dateLowerBound("Test error", yearLowBound).apply(yearInstant)
+        val result      = FormConstraints.dateLowerBound("Test error", realAppConfig.yearLowBound).apply(yearInstant)
 
         result shouldBe Valid
       }
 
       "return invalid when year entered is less than the defined year" in {
         val date      = Calendar.getInstance()
-        val yearsDiff = yearLowBound - currentYear - 1
+        val yearsDiff = realAppConfig.yearLowBound - realAppConfig.currentYear - 1
 
         date.add(Calendar.YEAR, yearsDiff)
 
         val yearInstant = date.toInstant
-        val result      = FormConstraints.dateLowerBound("Test error", yearLowBound).apply(yearInstant)
+        val result      = FormConstraints.dateLowerBound("Test error", realAppConfig.yearLowBound).apply(yearInstant)
 
-        result shouldBe Invalid("Test error", yearLowBound.toString)
+        result shouldBe Invalid("Test error", realAppConfig.yearLowBound.toString)
       }
     }
 

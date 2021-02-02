@@ -1134,6 +1134,8 @@ case.ownership.assign_case.back=Back to my cases
 case.change_status.move_back_to_team.heading=Move this case back to a team
 case.change_status.move_back_to_team.description=This case was previously assigned to the <span id="previous-queue">{0}</span> team.
 
+correspondence.form.enter.case_source=Enter a case source
+correspondence.form.enter.short_description=Enter a short description
 
-
+liability.form.invalid_entry=Invalid Entry
 

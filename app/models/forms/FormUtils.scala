@@ -29,7 +29,7 @@ object FormUtils {
     errorKey: String = "error.empty.default"
   ): Mapping[A] =
     fieldNonEmpty(errorKey)
-      .verifying("Invalid entry", s => Try(reader(s)).isSuccess)
+      .verifying("liability.form.invalid_entry", s => Try(reader(s)).isSuccess)
       .transform[A](reader, writer)
 
 }

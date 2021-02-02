@@ -22,6 +22,8 @@ import play.api.Mode.Mode
 import play.api.{Configuration, Environment, Mode}
 import uk.gov.hmrc.play.bootstrap.binders.SafeRedirectUrl
 import uk.gov.hmrc.play.bootstrap.config.ServicesConfig
+
+import java.util.Calendar
 @Singleton
 class AppConfig @Inject() (
   config: Configuration,
@@ -61,6 +63,8 @@ class AppConfig @Inject() (
   lazy val entryDateYearLowerBound: Int           = 2010
   lazy val dateOfReceiptYearLowerBound: Int       = 2010
   lazy val dateForRepaymentYearLowerBound: Int    = 2010
+  lazy val yearLowBound: Int                      = 2010
+  lazy val currentYear: Int                       = Calendar.getInstance().get(Calendar.YEAR)
 
   lazy val betaFeedbackUrl = s"$contactHost/contact/beta-feedback?service=$contactFormServiceIdentifier"
   lazy val betaFeedbackUnauthenticatedUrl =
@@ -75,6 +79,9 @@ class AppConfig @Inject() (
   lazy val maxUriLength: Long = config.underlying.getBytes("akka.http.parsing.max-uri-length")
 
   lazy val clock: Clock = Clock.systemUTC()
+
+
+
 
   def runningAsDev: Boolean = {
     environment.mode == Mode.Dev

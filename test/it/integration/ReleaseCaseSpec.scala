@@ -62,32 +62,4 @@ class ReleaseCaseSpec extends IntegrationTest with MockitoSugar {
     }
   }
 
-  // TODO: DIT-246 - fix this test
-//  "Case Release To Queue" should {
-//    val caseWithStatusNEW = CasePayloads.jsonOf(CaseExamples.btiCaseExample.copy(status = CaseStatus.NEW))
-//    val caseWithStatusOPEN = CasePayloads.jsonOf(CaseExamples.btiCaseExample.copy(status = CaseStatus.OPEN))
-//    val token = fakeApplication().injector.instanceOf[TokenProvider].generateToken
-//
-//    "return status 200" in {
-//      // Given
-//      stubFor(get(urlEqualTo("/cases/1"))
-//        .willReturn(aResponse()
-//          .withStatus(OK)
-//          .withBody(caseWithStatusNEW))
-//      )
-//      stubFor(put(urlEqualTo("/cases/1"))
-//        .willReturn(aResponse()
-//          .withStatus(OK)
-//          .withBody(caseWithStatusOPEN))
-//      )
-//
-//      // When
-//      val response: WSResponse = await(ws.url(s"http://localhost:$port/manage-tariff-classifications/cases/1/release").post(Map("queue" -> Seq("cars"), "csrfToken" -> Seq(token))))
-//
-//      // Then
-//      response.status shouldBe OK
-//      response.body should include("<h3 class=\"heading-medium mt-0\">This case has been released to the Cars queue</h3>")
-//    }
-//  }
-
 }

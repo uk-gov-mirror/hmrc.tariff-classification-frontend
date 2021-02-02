@@ -75,7 +75,6 @@ class CorrespondenceFormTest extends ModelsBaseSpec {
 
       form.hasErrors shouldBe true
       form.errors    should have(size(1))
-      //TODO get message for messages
       form.errors.head.message shouldBe "case.liability.error.email"
     }
 
@@ -89,9 +88,8 @@ class CorrespondenceFormTest extends ModelsBaseSpec {
       )
 
       form.hasErrors shouldBe true
-      form.errors    should have(size(1))
-      //TODO get message for messages
-      form.errors.head.message shouldBe "Please enter a case source"
+      form.errors should have(size(1))
+      form.errors.head.message shouldBe "correspondence.form.enter.case_source"
     }
 
     "Bind empty summary" in {
@@ -104,9 +102,8 @@ class CorrespondenceFormTest extends ModelsBaseSpec {
       )
 
       form.hasErrors shouldBe true
-      form.errors    should have(size(1))
-      //TODO get message for messages
-      form.errors.head.message shouldBe "Please enter a short description"
+      form.errors should have(size(1))
+      form.errors.head.message shouldBe "correspondence.form.enter.short_description"
     }
   }
 

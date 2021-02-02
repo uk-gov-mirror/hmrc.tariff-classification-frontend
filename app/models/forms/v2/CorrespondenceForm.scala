@@ -44,8 +44,8 @@ object CorrespondenceForm {
 
   val newCorrespondenceForm: Form[CorrespondenceApplication] = Form(
     mapping(
-      "summary"      -> textNonEmpty("Please enter a short description"),
-      "source"       -> textNonEmpty("Please enter a case source"),
+      "summary"      -> textNonEmpty("correspondence.form.enter.short_description"),
+      "source"       -> textNonEmpty("correspondence.form.enter.case_source"),
       "contactEmail" -> text.verifying("case.liability.error.email", e => validEmailFormat(e))
     )(form2Correspondence)(correspondence2Form)
   )
