@@ -37,6 +37,8 @@ case class Operator(
   def addPermissions(addedPermissions: Set[Permission]): Operator =
     this.copy(permissions = permissions ++ addedPermissions)
 
+  def withoutTeams = copy(memberOfTeams = Seq.empty, managerOfTeams = Seq.empty)
+  def withTeamsFrom(other: Operator) = copy(memberOfTeams = other.memberOfTeams, managerOfTeams = other.managerOfTeams)
 }
 
 object Role extends Enumeration {
